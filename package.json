@@ -15,7 +15,7 @@
     "dev": "jja clear && pnpm build && hhf_dev=all node ./dist/bin.mjs"
   },
   "overrides": {
-    "eslint": "^9"
+    "eslint": "^9.39.5"
   },
   "jja": {
     "pkg": [
