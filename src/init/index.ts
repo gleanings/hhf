@@ -1,5 +1,5 @@
-import { ArgsMapItem, question } from 'a-command';
-import { _p, fileExist } from 'a-node-tools';
+import { ArgsMapItem, question } from '@vvi/command';
+import { _p, fileExist } from '@vvi/node';
 import { configFileStartName } from '../aided/config-file-start-name';
 import { dog } from '../aided/dog';
 import { createConfigFile } from './create-config-file';

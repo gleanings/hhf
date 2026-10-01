@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-import { _p } from 'a-node-tools';
+import { _p } from '@vvi/node';
 import { command } from './aided/command';
 import { dog } from './aided/dog';
 import { HotDevelop } from './hot-class';

@@ -1,2 +1,5 @@
-onlyBuiltDependencies:
-  - unrs-resolver
+allowBuilds:
+  unrs-resolver: false
+
+#  禁止检测
+minimumReleaseAge: 0

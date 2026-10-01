@@ -1,53 +1,64 @@
 #!/bin/bash
-CHECK_VERSION="@qqi/check-version"
 
-# 安装  
-install_check_version() {
-    if ! npm  list -g --depth=0 | grep -q "${CHECK_VERSION}"; then 
-        echo "当前未全局安装 '${CHECK_VERSION}'，即将进行安装"
-        npm install ${CHECK_VERSION} --global
-    else 
-         echo "包 ${CHECK_VERSION} 已全局安装"
-    fi
-}
+# 严格模式：任何错误、未定义变量、管道失败都退出
+set -euo pipefail
 
-tag=""
-# npx 在某种程度上还是要比 pnpm 更靠谱呀
-install_check_version
-if ! tag=$(npx "${CHECK_VERSION}" c=. 2>&1); then
-    echo "未通过版本校验：$tag"
-    exit 0
+# 颜色输出（可选，但好看）
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+CHECK_VERSION="@vvi/check-version"
+TAG=""
+
+log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
+log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+# 1. 版本校验
+log_info "检查版本...."
+
+if ! TAG=$(npx --yes "${CHECK_VERSION}" c=. 2>&1); then
+    log_error "未通过版本校验：${TAG}"
+    exit 1
 fi
-echo "获取🉐发布标签为 ${tag}"
-# 依赖安装
-# npm ci
+log_info "获取发布标签为 ${TAG}"
+
+# 2. 依赖安装
+log_info "安装依赖..."
 pnpm install --frozen-lockfile --prod=false
-# 构建项目
+
+# 3. 构建项目
 if ! pnpm run build; then 
-  echo "构建失败" 
-  exit 0
+  log_error "构建失败" 
+  exit 1
 fi
 
-# 切换到构建目录
-if [ ! -d "dist" ]; then 
-  echo "未找到 dist 构建码"
-  exit 0
+# 4. 切换到构建目录
+if [[ ! -d "dist" ]]; then 
+  log_error "未找到 dist 构建码"
+  exit 1
 fi
 
-# 确保脚本在遇见错误时立即退出
-set -e
+# 5. 检测当前 npm 配置（调试用）
+log_info "检测 npm 配置"
 
-function build() {
-  cd  dist
-  echo "开始发布 npm 包 ${tag} 版本"
-  if ! pnpm publish --provenance --access public --tag "${tag}"  --no-git-checks; then
-      echo "发布失败" 
-      exit 1
-  fi
-  cd ../
-}
-build
-# node scripts/change-name.js
-# build
-echo "🚀🚀  发布成功，完结 🎉🎉 撒花 🎉🎉"
+# 下面两行并没有实际意义
+log_info "Registry: $(npm config get registry)"
+# 注意：OIDC 模式下不应有 _authToken，这里只是检查
+log_info "Auth token: $(npm config get //registry.npmjs.org/:_authToken || echo 'NOT SET')"
 
+# 6. 进入 dist 并发布
+cd "dist"
+log_info "开始在 dist 目录下进行发布"
+log_info "开始发布 npm 包 ${TAG} 版本"
+
+# 使用 --provenance 和 --access public
+# 注意：--no-git-checks 适用于非 git 仓库或特殊情况
+if npm publish --provenance --access public --tag "${TAG}" --no-git-checks; then
+    log_info "🚀🚀  发布成功，完结 🎉🎉 撒花 🎉🎉"
+    echo "::notice title=Publish Success::Package published at $(date)"
+else 
+    log_error "💥 发布 😔 失败 💔 " 
+    exit 1
+fi

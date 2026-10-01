@@ -1,6 +1,6 @@
 # hhf
 
-[![version](<https://img.shields.io/npm/v/hhf.svg?logo=npm&logoColor=rgb(0,0,0)&label=版本号&labelColor=rgb(73,73,228)&color=rgb(0,0,0)>)](https://www.npmjs.com/package/hhf) [![issues 提交](<https://img.shields.io/badge/issues-提交-rgb(255,0,63)?logo=github>)](https://github.com/MrMudBean/hhf/issues)
+[![version](<https://img.shields.io/npm/v/hhf.svg?logo=npm&logoColor=rgb(0,0,0)&label=版本号&labelColor=rgb(73,73,228)&color=rgb(0,0,0)>)](https://www.npmjs.com/package/hhf) [![issues 提交](<https://img.shields.io/badge/issues-提交-rgb(255,0,63)?logo=github>)](https://github.com/gleanings/hhf/issues)
 
 ---
 
@@ -135,7 +135,3 @@ watch: ['cli', 'tools'];
 ### `skip` : 忽略的文件
 
 `skip` 配置忽略监听的文件。**若构建文件未加入其中，可能会造成无限循环的：清理 -> 构建 -> 清理 -> 构建**
-
-## 文档地址
-
-参看 [earthnut.dev](https://earthnut.dev/npm/hhf/)

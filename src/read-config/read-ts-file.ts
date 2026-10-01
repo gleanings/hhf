@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
-import { _p } from 'a-node-tools';
-import { yellowPen } from 'color-pen';
+import { _p } from '@vvi/node';
+import { yellowPen } from '@vvi/pen';
 import { configFileStartName } from '../aided/config-file-start-name';
 import { dog } from '../aided/dog';
 import { hotData } from '../data-store/index';

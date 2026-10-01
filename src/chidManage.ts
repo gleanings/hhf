@@ -1,7 +1,7 @@
 import { spawn } from 'node:child_process';
 import { resolve } from 'node:path';
-import { _p, fileExist } from 'a-node-tools';
-import { bluePen, yellowPen } from 'color-pen';
+import { _p, fileExist } from '@vvi/node';
+import { bluePen, yellowPen } from '@vvi/pen';
 import { dog } from './aided/dog';
 import { hotData } from './data-store';
 const { stdin, stdout } = process;

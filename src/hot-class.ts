@@ -2,16 +2,16 @@
  * 该文件为开发文件，仅在开发环境使用。用于开发的热更新
  */
 import { watch, statSync } from 'node:fs';
-import { ArgsMap } from 'a-command';
-import { throttle } from 'a-js-tools';
-import { _p, pathJoin } from 'a-node-tools';
+import { ArgsMap } from '@vvi/command';
+import { _p, pathJoin } from '@vvi/node';
 import {
   brightYellowPen,
   cyanPen,
   greenPen,
   redPen,
   yellowPen,
-} from 'color-pen';
+} from '@vvi/pen';
+import { throttle } from '@vvi/utils';
 import { dog } from './aided/dog';
 import { CommandParam } from './aided/type';
 import { beforeRestart } from './beforeRestart';

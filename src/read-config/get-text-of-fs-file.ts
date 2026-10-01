@@ -1,7 +1,7 @@
 // import vm from 'node:vm';
 import { unlinkSync, writeFileSync } from 'node:fs';
-import { getRandomString } from 'a-js-tools';
-import { pathJoin } from 'a-node-tools';
+import { pathJoin } from '@vvi/node';
+import { getRandomString } from '@vvi/utils';
 
 import { dog } from '../aided/dog';
 import { ConfigOfFile } from './type';

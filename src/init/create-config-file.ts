@@ -1,4 +1,4 @@
-import { pathBasename } from 'a-node-tools';
+import { pathBasename } from '@vvi/node';
 import { createJsConfigFile } from './create-js-config';
 import { createJsonConfigFile } from './create-json-config';
 import { createTsConfigFile } from './create-ts-config';

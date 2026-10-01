@@ -1,8 +1,8 @@
 // 创建实体对象
-import { Command } from 'a-command';
+import { Args } from '@vvi/command';
 import { CommandParam } from './type';
 
-const command = new Command<CommandParam>('hhf');
+const command = new Args<CommandParam>('hhf');
 
 command
   .bind([

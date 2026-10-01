@@ -1,8 +1,8 @@
 import { ChildProcessWithoutNullStreams } from 'child_process';
 import { FSWatcher } from 'node:fs';
-import { ArgsMap } from 'a-command';
-import { isWindows } from 'a-node-tools';
-import { isArray, isString, typeOf } from 'a-type-of-js';
+import { ArgsMap } from '@vvi/command';
+import { isArray, isString, typeOf } from '@vvi/is';
+import { isWindows } from '@vvi/node';
 import { CommandParam } from '../aided/type';
 import { DefineOptions } from './type';
 /**

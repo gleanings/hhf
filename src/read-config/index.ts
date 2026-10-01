@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { fileExist, readFileToJsonSync } from 'a-node-tools';
+import { fileExist, readFileToJsonSync } from '@vvi/node';
 import { configFileStartName } from '../aided/config-file-start-name';
 import { dog } from '../aided/dog';
 import { hotData } from '../data-store';

@@ -1,5 +1,3 @@
-import { enArr } from 'a-js-tools';
-import { _p } from 'a-node-tools';
 import {
   isArray,
   isEmptyObject,
@@ -7,8 +5,10 @@ import {
   isPlainObject,
   isString,
   isUndefined,
-} from 'a-type-of-js';
-import { bluePen } from 'color-pen';
+} from '@vvi/is';
+import { _p } from '@vvi/node';
+import { bluePen } from '@vvi/pen';
+import { enArr } from '@vvi/utils';
 import { dog } from './aided/dog';
 import { hotData } from './data-store';
 import { DefineOptions } from './data-store/type';

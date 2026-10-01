@@ -1,6 +1,6 @@
-import { _p, fileExist } from 'a-node-tools';
+import { question } from '@vvi/command';
+import { _p, fileExist } from '@vvi/node';
 
-import { command } from '../aided/command';
 import { configFileStartName } from '../aided/config-file-start-name';
 import { createConfigFile } from './create-config-file';
 
@@ -14,7 +14,7 @@ export async function noExtension() {
 
   if (isExist) {
     const tip = ['覆盖', '退出'];
-    const result = await command.question({
+    const result = await question({
       text: '配置文件已存在 ，是否覆盖',
       tip,
       private: true,
@@ -29,7 +29,7 @@ export async function noExtension() {
 
   const tip = ['json', 'js', 'ts', '退出'];
 
-  const result = await command.question({
+  const result = await question({
     text: '请选择您想初始化的配置文件类型',
     tip,
     resultText: '这一行不该有呀',

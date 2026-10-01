@@ -1,4 +1,4 @@
-import { writeJsonFileSync } from 'a-node-tools';
+import { writeJsonFileSync } from '@vvi/node';
 import { configFileStartName } from '../aided/config-file-start-name';
 
 /**

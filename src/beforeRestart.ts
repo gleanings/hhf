@@ -1,4 +1,4 @@
-import { _p, pathJoin, runOtherCode } from 'a-node-tools';
+import { _p, pathJoin, runOtherCode } from '@vvi/node';
 import { dog } from './aided/dog';
 import { hotData } from './data-store';
 
